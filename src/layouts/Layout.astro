@@ -11,7 +11,7 @@ const base = import.meta.env.BASE_URL;
 
 const {
   title,
-  description = 'FOROS株式会社 - 経営者の立場に立ち、業務改革・新規事業をITで実現。計画策定から運用まで、ワンストップで競争力を加速させます。',
+  description = 'FOROS株式会社 - お客様の競争力を最大化し、お客様と共に成長する。Accelerating Competitiveness.',
   ogImage = `${base}og-image.png`,
 } = Astro.props;
 
@@ -80,7 +80,7 @@ const ogImageURL = new URL(ogImage, Astro.site);
         addressCountry: 'JP',
       },
       foundingDate: '2002-10',
-      description: '経営者の立場に立ち、業務改革・新規事業をITで実現するFOROS株式会社',
+      description: 'お客様の競争力を最大化し、お客様と共に成長する。Accelerating Competitiveness.',
       sameAs: ['https://sitrom.com'],
     })}
   />
@@ -106,7 +106,7 @@ const ogImageURL = new URL(ogImage, Astro.site);
   <!-- Mark JS-ready immediately to enable animations before paint -->
   <script is:inline>document.documentElement.classList.add('js-ready');</script>
 </head>
-<body class="bg-surface text-slate-200 font-sans antialiased overflow-x-hidden">
+<body class="bg-surface text-gray-800 font-sans antialiased overflow-x-hidden">
   <!-- Skip navigation (accessibility) -->
   <a href="#main-content" class="skip-nav">メインコンテンツへスキップ</a>
 
@@ -144,6 +144,17 @@ const ogImageURL = new URL(ogImage, Astro.site);
 
     document.addEventListener('DOMContentLoaded', initAnimations);
     document.addEventListener('astro:page-load', initAnimations);
+
+    // Parallax scroll effect for Hero orbs
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        document.querySelectorAll('[data-parallax]').forEach((el) => {
+          const speed = parseFloat((el as HTMLElement).dataset.parallax || '0');
+          (el as HTMLElement).style.transform = `translateY(${y * speed}px)`;
+        });
+      }, { passive: true });
+    }
   </script>
 </body>
 </html>
