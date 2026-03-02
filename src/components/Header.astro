@@ -3,11 +3,12 @@ interface Props {
   currentPage?: 'home' | 'careers';
 }
 const { currentPage = 'home' } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
   <div class="max-w-7xl mx-auto px-5 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-3 group">
+    <a href={base} class="flex items-center gap-3 group">
       <svg class="w-9 h-9 transition-transform duration-300 group-hover:scale-105" viewBox="0 0 40 40" fill="none">
         <rect x="2" y="2" width="36" height="36" rx="10" fill="url(#hg)" fill-opacity="0.15" stroke="url(#hg)" stroke-width="1.5"/>
         <path d="M14 12h14M14 12v18M14 20h10" stroke="url(#hg)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -31,9 +32,9 @@ const { currentPage = 'home' } = Astro.props;
           <a href="#contact" class="nav-link">Contact</a>
         </>
       ) : (
-        <a href="/" class="nav-link">Home</a>
+        <a href={base} class="nav-link">Home</a>
       )}
-      <a href="/careers" class="nav-cta">Careers</a>
+      <a href={`${base}careers`} class="nav-cta">Careers</a>
     </nav>
 
     <!-- Mobile toggle -->
@@ -59,9 +60,9 @@ const { currentPage = 'home' } = Astro.props;
           <a href="#contact" class="mobile-link">Contact</a>
         </>
       ) : (
-        <a href="/" class="mobile-link">Home</a>
+        <a href={base} class="mobile-link">Home</a>
       )}
-      <a href="/careers" class="mobile-link gradient-text font-semibold">Careers</a>
+      <a href={`${base}careers`} class="mobile-link gradient-text font-semibold">Careers</a>
     </nav>
   </div>
 </header>
