@@ -41,6 +41,12 @@
         </button>
       </form>
 
+      <noscript>
+        <p class="text-center text-slate-400 mt-4 mb-6">
+          JavaScriptが無効です。<a href="mailto:info@foros.jp" class="text-primary hover:text-accent transition-colors">info@foros.jp</a>に直接メールをお送りください。
+        </p>
+      </noscript>
+
       <div class="h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent mb-10"></div>
 
       <!-- Direct contact info -->
@@ -74,5 +80,15 @@
     const subject = encodeURIComponent(`【Webサイトお問い合わせ】${name}様より`);
     const body = encodeURIComponent(`お名前: ${name}\nメール: ${email}\n\n${message}`);
     window.location.href = `mailto:info@foros.jp?subject=${subject}&body=${body}`;
+
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    if (btn) {
+      btn.textContent = 'メールアプリが開きます';
+      btn.classList.add('opacity-60', 'pointer-events-none');
+      setTimeout(() => {
+        btn.textContent = '送信する';
+        btn.classList.remove('opacity-60', 'pointer-events-none');
+      }, 3000);
+    }
   });
 </script>
