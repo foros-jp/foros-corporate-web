@@ -1,0 +1,102 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = 'FOROS株式会社 - 経営者の立場に立ち、業務改革・新規事業をITで実現。計画策定から運用まで、ワンストップで競争力を加速させます。',
+  ogImage = '/og-image.png',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- OGP -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:site_name" content="FOROS株式会社" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <title>{title}</title>
+
+  <!-- JSON-LD -->
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'FOROS株式会社',
+      alternateName: 'フォロス株式会社',
+      url: 'https://foros.jp',
+      email: 'info@foros.jp',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '高円寺南4-26-5 YSビル2F',
+        addressLocality: '杉並区',
+        addressRegion: '東京都',
+        postalCode: '166-0003',
+        addressCountry: 'JP',
+      },
+      foundingDate: '2002-10',
+      description: '経営者の立場に立ち、業務改革・新規事業をITで実現するFOROS株式会社',
+      sameAs: ['https://sitrom.com'],
+    })}
+  />
+</head>
+<body class="bg-surface text-slate-200 font-sans antialiased overflow-x-hidden">
+  <slot />
+
+  <!-- Scroll animation observer -->
+  <script>
+    function initAnimations() {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+      );
+
+      document
+        .querySelectorAll('.anim, .anim-left, .anim-right, .svg-draw')
+        .forEach((el) => observer.observe(el));
+    }
+
+    document.addEventListener('DOMContentLoaded', initAnimations);
+    document.addEventListener('astro:page-load', initAnimations);
+  </script>
+</body>
+</html>
