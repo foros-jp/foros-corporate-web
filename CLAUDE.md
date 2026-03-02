@@ -21,6 +21,7 @@ src/
 │   ├── Product.astro        # Sitrom-CC showcase
 │   ├── Stories.astro        # Solution stories bento grid
 │   ├── About.astro          # Company info
+│   ├── CTA.astro            # Call-to-action section
 │   ├── Contact.astro        # Contact form (mailto-based)
 │   └── Footer.astro         # Site footer
 ├── pages/
