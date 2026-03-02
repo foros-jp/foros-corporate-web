@@ -1,10 +1,9 @@
-<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="2" y="2" width="36" height="36" rx="10" fill="url(#g)" fill-opacity="0.15" stroke="url(#g)" stroke-width="1.5"/>
-  <path d="M14 12h14M14 12v18M14 20h10" stroke="url(#g)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="40" y2="40">
-      <stop offset="0%" stop-color="#818cf8"/>
-      <stop offset="100%" stop-color="#22d3ee"/>
-    </linearGradient>
-  </defs>
+<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- FOROS hexagon cluster favicon -->
+  <!-- Orange hex (top) -->
+  <polygon points="16,2 22,5.5 22,12.5 16,16 10,12.5 10,5.5" fill="#E8891A"/>
+  <!-- Navy hex (bottom-left) -->
+  <polygon points="10,12.5 16,16 16,23 10,26.5 4,23 4,16" fill="#1B3A6B"/>
+  <!-- Navy hex (bottom-right) -->
+  <polygon points="22,12.5 28,16 28,23 22,26.5 16,23 16,16" fill="#1B3A6B"/>
 </svg>
