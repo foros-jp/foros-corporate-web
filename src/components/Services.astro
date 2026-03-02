@@ -17,7 +17,9 @@
     </div>
 
     <!-- Cards -->
-    <div class="grid md:grid-cols-3 gap-6 stagger">
+    <div class="grid md:grid-cols-3 gap-6 stagger relative">
+      <!-- Step connector line (desktop only) -->
+      <div class="hidden md:block absolute top-[3.5rem] left-[calc(33.33%+0.75rem)] right-[calc(33.33%+0.75rem)] h-[1px] bg-gradient-to-r from-primary/30 via-accent/30 to-primary/30 z-10 pointer-events-none"></div>
       <!-- Analysis -->
       <div class="card card-glow group anim">
         <div class="mb-6">

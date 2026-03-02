@@ -11,7 +11,7 @@
   --color-primary: #818cf8;
   --color-accent: #22d3ee;
   --color-emerald: #34d399;
-  --color-muted: #64748b;
+  --color-muted: #7a8599;
   --color-border: rgba(255, 255, 255, 0.06);
   --color-border-hover: rgba(255, 255, 255, 0.12);
 
@@ -72,43 +72,57 @@
 }
 
 /* ── Scroll-triggered animations ── */
-.anim {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.anim.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.anim-left {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.anim-left.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
+/* SEO-safe: content visible by default for crawlers & no-JS.
+   Animations only activate when JS adds .js-ready to <html>
+   and user allows motion. */
+.anim,
+.anim-left,
 .anim-right {
-  opacity: 0;
-  transform: translateX(40px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.anim-right.visible {
   opacity: 1;
-  transform: translateX(0);
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js-ready .anim {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .js-ready .anim.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .js-ready .anim-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .js-ready .anim-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .js-ready .anim-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .js-ready .anim-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Stagger children */
-.stagger > .anim:nth-child(1) { transition-delay: 0ms; }
-.stagger > .anim:nth-child(2) { transition-delay: 120ms; }
-.stagger > .anim:nth-child(3) { transition-delay: 240ms; }
-.stagger > .anim:nth-child(4) { transition-delay: 360ms; }
-.stagger > .anim:nth-child(5) { transition-delay: 480ms; }
+@media (prefers-reduced-motion: no-preference) {
+  .js-ready .stagger > .anim:nth-child(1) { transition-delay: 0ms; }
+  .js-ready .stagger > .anim:nth-child(2) { transition-delay: 120ms; }
+  .js-ready .stagger > .anim:nth-child(3) { transition-delay: 240ms; }
+  .js-ready .stagger > .anim:nth-child(4) { transition-delay: 360ms; }
+  .js-ready .stagger > .anim:nth-child(5) { transition-delay: 480ms; }
+}
 
 /* ── Utilities ── */
 .gradient-text {
@@ -197,6 +211,31 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ── Focus visible (accessibility) ── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Skip navigation (accessibility) ── */
+.skip-nav {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: top 0.2s;
+}
+.skip-nav:focus {
+  top: 1rem;
+}
+
 /* ── Selection ── */
 ::selection {
   background: rgba(129, 140, 248, 0.3);
@@ -224,12 +263,29 @@ html {
 .svg-draw circle,
 .svg-draw polyline {
   stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  transition: stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.svg-draw.visible path,
-.svg-draw.visible line,
-.svg-draw.visible circle,
-.svg-draw.visible polyline {
   stroke-dashoffset: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js-ready .svg-draw path,
+  .js-ready .svg-draw line,
+  .js-ready .svg-draw circle,
+  .js-ready .svg-draw polyline {
+    stroke-dashoffset: 200;
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .js-ready .svg-draw.visible path,
+  .js-ready .svg-draw.visible line,
+  .js-ready .svg-draw.visible circle,
+  .js-ready .svg-draw.visible polyline {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ── Mobile typography ── */
+@media (max-width: 640px) {
+  .gradient-text {
+    word-break: keep-all;
+    overflow-wrap: normal;
+  }
 }
