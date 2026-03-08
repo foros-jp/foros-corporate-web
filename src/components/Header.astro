@@ -9,12 +9,7 @@ const base = import.meta.env.BASE_URL;
   <div class="max-w-7xl mx-auto px-5 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
     <!-- Logo (hexagon cluster) -->
     <a href={base} class="flex items-center gap-3 group">
-      <svg class="w-9 h-9 transition-transform duration-300 group-hover:scale-105" viewBox="0 0 20 21" fill="none">
-        <polygon points="10,0 15,3 15,9 10,12 5,9 5,3" fill="#E8891A"/>
-        <polygon points="5,9 10,12 10,18 5,21 0,18 0,12" fill="#1B3A6B"/>
-        <polygon points="15,9 20,12 20,18 15,21 10,18 10,12" fill="#1B3A6B"/>
-      </svg>
-      <span class="text-xl font-bold tracking-tight" style="color: #C97A15;">FOROS</span>
+      <img src={`${base}foros_logo_message.png`} alt="フォロス株式会社" class="h-9 sm:h-10 w-auto transition-transform duration-300 group-hover:scale-105" />
     </a>
 
     <!-- Desktop Nav -->
