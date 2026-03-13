@@ -7,13 +7,8 @@ const base = import.meta.env.BASE_URL;
     <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
       <!-- Brand -->
       <div class="md:col-span-2">
-        <a href={base} class="flex items-center gap-3 mb-5">
-          <svg class="w-8 h-8" viewBox="0 0 20 21" fill="none">
-            <polygon points="10,0 15,3 15,9 10,12 5,9 5,3" fill="#E8891A"/>
-            <polygon points="5,9 10,12 10,18 5,21 0,18 0,12" fill="#1B3A6B"/>
-            <polygon points="15,9 20,12 20,18 15,21 10,18 10,12" fill="#1B3A6B"/>
-          </svg>
-          <span class="text-lg font-bold tracking-tight" style="color: #C97A15;">FOROS</span>
+        <a href={base} class="inline-block mb-5">
+          <img src={`${base}foros_logo_message.webp`} alt="フォロス株式会社" class="h-10 w-auto" width="656" height="176" loading="lazy" />
         </a>
         <p class="text-sm text-gray-500 leading-relaxed max-w-sm mb-6">
           お客様の競争力を最大化し、お客様と共に成長する。<br/>
