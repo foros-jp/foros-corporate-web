@@ -12,7 +12,7 @@ const base = import.meta.env.BASE_URL;
 const {
   title,
   description = 'フォロス株式会社 - お客様の競争力を最大化し、お客様と共に成長する。Accelerating Competitiveness.',
-  ogImage = `${base}foros_logo_message.png`,
+  ogImage = `${base}foros_logo_message.webp`,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -24,7 +24,7 @@ const ogImageURL = new URL(ogImage, Astro.site);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
-  <meta name="theme-color" content="#050507" />
+  <meta name="theme-color" content="#ffffff" />
   <link rel="canonical" href={canonicalURL} />
   <link rel="alternate" hreflang="ja" href={canonicalURL} />
 
@@ -44,6 +44,7 @@ const ogImageURL = new URL(ogImage, Astro.site);
   <meta name="twitter:image" content={ogImageURL} />
 
   <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
   <link rel="icon" type="image/x-icon" href={`${base}favicon.ico`} />
 
   <!-- Fonts: preload critical + async load rest -->
@@ -81,6 +82,7 @@ const ogImageURL = new URL(ogImage, Astro.site);
       },
       foundingDate: '2002-10',
       description: 'お客様の競争力を最大化し、お客様と共に成長する。Accelerating Competitiveness.',
+      logo: 'https://foros.jp/foros_logo_message.webp',
       sameAs: ['https://sitrom.com'],
     })}
   />
