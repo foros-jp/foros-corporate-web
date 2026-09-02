@@ -326,3 +326,13 @@ html {
     overflow-wrap: normal;
   }
 }
+
+/* ── Viewport height (iOS Safari/Brave のツールバー分を考慮) ── */
+.min-h-screen-safe {
+  min-height: 100vh;
+}
+@supports (min-height: 100svh) {
+  .min-h-screen-safe {
+    min-height: 100svh;
+  }
+}
